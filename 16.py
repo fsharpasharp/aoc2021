@@ -71,13 +71,10 @@ class OperatorPacket:
     def parse(self, string : str) -> str:
         if not self.length_type:
             self.length, string = parse_binary(string, 15)
-            i = 0
-            while i < self.length:
-                before = len(string)
-                sh, string = parse_standard_header(string)
-                after = len(string)
+            substring, string = parse_string(string, self.length)
+            while substring:
+                sh, substring = parse_standard_header(substring)
                 self.sub_packets.append(sh)
-                i += before - after
         else:
             self.length, string = parse_binary(string, 11)
             for _ in range(self.length):

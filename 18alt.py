@@ -136,7 +136,7 @@ print(magnitude(line))
 
 
 maximum = 0
-for line1, line2 in product(lines, lines):
+for line1, line2 in product(lines, repeat=2):
     if line1 == line2:
         continue
 

@@ -15,7 +15,7 @@ class Grid:
         adjacent = []
         one_step = range(-1, 2)
 
-        adjacent = [(y+i, x+j) for i, j in product(one_step, one_step)]
+        adjacent = [(y+i, x+j) for i, j in product(one_step, repeat=2)]
         return filter(lambda yx: 0 <= yx[0] < self.height and 0 <= yx[1] < self.width, adjacent)
 
 
